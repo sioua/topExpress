@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>controller</servlet-name>
+        <servlet-class>com.al.controllers.controller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>controller</servlet-name>
+        
+        <url-pattern>/config/login</url-pattern>
+        <url-pattern>/manager/accueil</url-pattern>
+        <url-pattern>/manager/accueil/topEntretien</url-pattern>
+        <url-pattern>/default/accueil</url-pattern>
+        <url-pattern>/manager/vehicule/edit</url-pattern>
+        <url-pattern>/manager/vehicule/save</url-pattern>
+        <url-pattern>/manager/vehicule/list</url-pattern>
+        <url-pattern>/manager/vehicule/listc</url-pattern>
+        <url-pattern>/manager/vehicule/detail</url-pattern>
+        <url-pattern>/manager/vehicule/modele</url-pattern>
+        <url-pattern>/manager/vehicule/marque</url-pattern>
+        <url-pattern>/manager/vehicule/carrosserie</url-pattern>
+        <url-pattern>/manager/chauffeur/add</url-pattern>
+        <url-pattern>/manager/chauffeur/list</url-pattern>
+        <url-pattern>/manager/chauffeur/edit</url-pattern>
+        <url-pattern>/manager/chauffeur/detail</url-pattern>
+        <url-pattern>/manager/entretien/create</url-pattern>
+        <url-pattern>/manager/entretien/list</url-pattern>
+        <url-pattern>/default/remisage/create</url-pattern>
+        <url-pattern>/default/remisage/preview</url-pattern>
+        <url-pattern>/default/remisage/search</url-pattern>
+        <url-pattern>/default/remisage/resultat</url-pattern>
+        <url-pattern>/default/remisage/reception</url-pattern>
+        <url-pattern>/default/remisage/detail</url-pattern>
+        <url-pattern>/default/remisage/step2</url-pattern>
+        <url-pattern>/default/remisage/step3</url-pattern>
+        <url-pattern>/manager/remisage/reception</url-pattern>
+        <url-pattern>/manager/remisage/detail</url-pattern>
+        <url-pattern>/manager/remisage/dashbord</url-pattern>
+        <url-pattern>/admin/organisation/employe/list</url-pattern>
+        <url-pattern>/admin/organisation/employe/add</url-pattern>
+        <url-pattern>/admin/organisation/employe/edit</url-pattern>
+        <url-pattern>/admin/organisation/service/list</url-pattern>
+        <url-pattern>/admin/organisation/service/edit</url-pattern>
+        <url-pattern>/admin/organisation/departement/list</url-pattern>
+        <url-pattern>/admin/organisation/departement/add</url-pattern>
+        <url-pattern>/admin/organisation/direction/add</url-pattern>
+        <url-pattern>/manager/sinistre/add</url-pattern>
+        <url-pattern>/manager/sinistre/list</url-pattern>
+        <url-pattern>/manager/garage/add</url-pattern>
+        <url-pattern>/manager/carburant/add</url-pattern>
+        <url-pattern>/manager/reclamation/add</url-pattern>
+        <url-pattern>/manager/mission/create</url-pattern>
+        <url-pattern>/manager/mission/list</url-pattern>
+        <url-pattern>/manager/parameter/contrat</url-pattern>
+        <url-pattern>/manager/parameter/energie</url-pattern>
+        <url-pattern>/manager/parameter/puissance</url-pattern>
+        <url-pattern>/manager/parameter/site</url-pattern>
+        <url-pattern>/manager/parameter/nombre_place</url-pattern>
+        <url-pattern>/manager/parameter/type_contrat</url-pattern>
+        <url-pattern>/manager/action</url-pattern>
+    </servlet-mapping>
+    <!--<session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>-->
+    
+    <session-config>
+        <session-timeout>-1</session-timeout>
+    </session-config>
+    
+    <error-page>
+        <!-- Missing login -->
+        <error-code>401</error-code>
+        <location>/WEB-INF/view/error/error-401.html</location>
+    </error-page>
+    <error-page>
+        <!-- Forbidden directory listing -->
+        <error-code>403</error-code>
+        <location>/WEB-INF/view/error/error-403.html</location>
+    </error-page>
+    <error-page>
+        <!-- Forbidden directory listing -->
+        <error-code>404</error-code>
+        <location>/WEB-INF/view/error/error-404.html</location>
+    </error-page>
+    <error-page>
+        <!-- Uncaught exception -->
+        <error-code>500</error-code>
+        <location>/WEB-INF/view/error/error-500.html</location>
+    </error-page>
+    <error-page>
+        <!-- Unsupported servlet method -->
+        <error-code>503</error-code>
+        <location>/WEB-INF/view/error/error-503.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/WEB-INF/view/error/error.html</location>
+    </error-page>
+</web-app>
