@@ -1,4 +1,6 @@
- 
+<?php
+	include_once '../includes/dbConnexion.php';
+?> 
 <!DOCTYPE html>
 <html>
 
@@ -276,7 +278,7 @@
                                         <div class="section row mbn">
 
 
-                                            <form id="form" action="manager/vehicule/save" method="post" class="wizard-big">
+                                            <form id="form" action="saveVehicule.php" method="post" class="wizard-big">
                                                 <h1>Informations générales</h1>
                                                 <fieldset>
                                                     <h5 style="margin: 0;">Informations générales</h5>
@@ -295,7 +297,7 @@
                                                                 <div class="form-group">
                                                                     <label>Date de 1ère mise en circulation *</label>
                                                                     <label for="date_ms" class="field prepend-icon">
-                                                                        <input type="text" id="date_ms" name="date_ms" class="gui-input datepicker1" placeholder="">
+                                                                        <input type="date" id="date_ms" name="date_ms" class="gui-input datepicker1" placeholder="">
                                                                         <label class="field-icon"><i class="fa fa-calendar-o"></i>
                                                                         </label>
                                                                     </label>
@@ -305,17 +307,17 @@
                                                             </div>
                                                             <div class="col-md-6" style="margin-top: 10px;">
                                                                 <div class="form-group">
-                                                                    <label>Contrat </label>
-                                                                    <select id="contrat" name="contrat" data-placeholder="" class="chosen-select form-control" tabindex="2">
-                                                                        <option value=""></option>
-                                                                         
-                                                                    </select>
+                                                                    <label>Date d'achat du véhicule </label>
+                                                                    <input type="date" id="date_achat" name="date_achat" class="gui-input datepicker1" placeholder="">
                                                                 </div>
- 
-                                                                <div class="form-group">
-                                                                    <label>Identification propriétaire </label>
-                                                                    <input id="proprietaire" name="proprietaire" type="text" class="form-control">
+																<div class="form-group">
+                                                                    <label>Etat *</label>
 
+                                                                    <select id="etat" name="etat" data-placeholder="" class="chosen-select form-control" tabindex="2">
+                                                                        <option value=""></option>
+                                                                        <option value="En entretien">En entretien</option>
+                                                                        <option value="Opérationnel">Opérationnel</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -331,8 +333,15 @@
                                                                 <div class="form-group">
                                                                     <label>Marque *</label>
                                                                     <select id="marque" name="marque" data-placeholder="" class="chosen-select form-control" tabindex="2" onchange="setModele(this)">
-                                                                        <option value=""></option>
-                                                                         
+																	<option value=""></option>
+																	<?php
+																		//Sélection de marque à partir de la base de données
+																		$selectMarque = $mysqli->query("SELECT * FROM marque");
+																		$resultatMarque = $selectMarque->fetchall();
+																		foreach($resultatMarque as $marque){
+																			echo"<option value='".$marque['0']."'>".$marque['1']."</option>";
+																		}
+																	?>                                                                         
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
@@ -374,17 +383,23 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Nombre de place *</label>
-                                                                    <select id="nombre_place" name="nombre_place" class="chosen-select form-control" tabindex="2">
+																	<select id="nombre_place" name="nombre_place" class="chosen-select form-control" tabindex="2">
                                                                         <option value=""></option>
+                                                                        <option value="32">32</option>
+                                                                        <option value="45">45</option>
+                                                                        <option value="65">65</option>
+                                                                        <option value="70">70</option>
                                                                          
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Couleur *</label>
-
                                                                     <select id="couleur" name="couleur" data-placeholder="" class="chosen-select form-control" tabindex="2">
                                                                         <option value=""></option>
-                                                                         
+                                                                        <option value="Blanche">Blanche</option>
+                                                                        <option value="Grise">Grise</option>
+                                                                        <option value="Noire">Noire</option>
+                                                                        <option value="Beige">Beige</option>                                      
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -394,7 +409,7 @@
                                                 <fieldset>
 
                                                     <h5 style="margin: 0;">Assignation du véhicule</h5>
-                                                    <h6 style="margin: 0;">Les champs précédés du caractère astérisque (*) sont obligatoires</6>
+                                                    <h6 style="margin: 0;">Les champs précédés du caractère astérisque (*) sont obligatoires</h6>
 
                                                         <div class="row">
 
@@ -465,7 +480,6 @@
                                                         </div>
                                                 </fieldset>
                                                  
-
                                                 <input type="hidden" name="action" value="vehicule" />
                                                 <input type="hidden" name="section" value="vehicule" />
                                                 <input type="hidden" name="operation" value="add" />

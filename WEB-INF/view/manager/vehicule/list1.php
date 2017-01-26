@@ -1,6 +1,4 @@
-<?php
-	include_once '../includes/dbConnexion.php';
-?>
+ 
 <!DOCTYPE html>
 <html>
 
@@ -248,7 +246,7 @@
                     </div>
                     <div class="topbar-right">
                          
-                        <a href="save.php" class="btn btn-danger btn-sm fw600 ml10 btn-gradient btn-rounded"><span class="fa fa-plus pr5"></span> Ajouter véhicule</a>
+                        <a href="manager/vehicule/save" class="btn btn-danger btn-sm fw600 ml10 btn-gradient btn-rounded"><span class="fa fa-plus pr5"></span> Ajouter véhicule</a>
                     </div>
 
                 </header>
@@ -296,59 +294,54 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-										<?php
-											/*<!--<td class="text-center"><strong>immatriculation</strong></td>
-											<td class="w50 text-center">
-												 
-												<img class="" style="border:2px solid #C4C4C4; height: 60px; width: 90px;" title="vehicule" src="/hmedia-pictures-ak-xat1/images/small/ .png">
-											</td>-->*/
-											$selectCar = $mysqli->query("SELECT * FROM car");
-											$resultatCar = $selectCar->fetchall();
-											foreach($resultatCar as $car){
-												$date = new DateTime($car['9']);
-												$dms = $date->format('d-m-Y');
-												echo'<tr>
-													<td class="text-center">
-														 '.$car['1'].'
-													</td>
-													<td class="text-center">
-														 '.$car['1'].'
-													</td>
-														'.$car['11'].'
-													<td class="text-center">
-														 '.$car['1'].'
-													</td>
-														'.$car['1'].'
-													<td class="text-center">
-														 '.$car['1'].'
-													</td>
-													<td class="text-center">
-														'.$car['1'].'
-													</td>
-													<td class="text-center">
-														'.$car['1'].'
-													</td>
-													<td class="text-center">
-														'.$dms.'
-													</td>
-													<td class="text-center">
-														'.$car['1'].'
-													</td>
-													<td class="text-center">
-														'.$car['1'].'
-													</td>
-													<td class="text-right">
-														<a href="manager/vehicule/edit?arg= " class="btn btn-xs btn-dark">
-															<span class="fa fa-edit"></span>
-														</a>&nbsp;<a href="manager/vehicule/detail?arg= " class="btn btn-xs btn-dark">
-															<span class="fa fa-eye"></span>
-													</td>
-												</tr>';
-											}
+                                         
 
-										?>
-										
+                                        <tr>
+                                            <td class="text-center"><strong>immatriculation</strong></td>
+                                            <td class="w50 text-center">
+                                                 
+                                                <img class="" style="border:2px solid #C4C4C4; height: 60px; width: 90px;" title="vehicule" src="/hmedia-pictures-ak-xat1/images/small/ .png">
+                                                
+
+                                            </td>
+                                            <td class="text-center">
+                                                 
+                                            </td>
+                                            <td class="text-center">
+                                                 
+                                            </td>
+                                            
+                                            <td class="text-center">
+                                                 
+                                            </td>
+                                            
+                                            <td class="text-center">
+                                                 
+                                            </td>
+                                            <td class="text-center">
+                                                
+                                            </td>
+                                            <td class="text-center">
+                                               
+                                                
+                                            </td>
+                                            <td class="text-center">
+                                                
+                                            </td>
+                                            <td class="text-center">
+                                                
+                                            </td>
+                                            <td class="text-center">
+                                                
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="manager/vehicule/edit?arg= " class="btn btn-xs btn-dark">
+                                                    <span class="fa fa-edit"></span>
+                                                </a>&nbsp;<a href="manager/vehicule/detail?arg= " class="btn btn-xs btn-dark">
+                                                    <span class="fa fa-eye"></span>
+                                            </td>
+                                        </tr>
+ 
                                     </tbody>
                                 </table>
                             </div>
