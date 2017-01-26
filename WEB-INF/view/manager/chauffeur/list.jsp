@@ -1,13 +1,11 @@
-<?php
-	include_once '../includes/dbConnexion.php';
-?>
+ 
 <!DOCTYPE html>
 <html>
 
     <head>
         <!-- Meta, title, CSS, favicons, etc. -->
         <meta charset="utf-8">
-        <title>Top Express</title>
+        <title>Parc auto</title>
         <meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />
         <meta name="description" content="AdminDesigns - SHARED ON GFXFree.Net">
         <meta name="author" content="AdminDesigns">
@@ -35,13 +33,18 @@
 
 
         <link href="../../../../vendor/plugins/chosen/chosen.css" rel="stylesheet">
-         
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
 
     </head>
 
     <body class="dashboard-page sb-l-o sb-r-c">
 
          
+        
         <!-- Start: Main -->
         <div id="main">
 
@@ -50,7 +53,7 @@
                 <div class="navbar-branding">
                     <a class="navbar-brand" href="dashboard.html">
                         <img src="../../../../assets/img/logos/logo.gif"/>
-                        Top Express
+                        Parc auto
                     </a>
                     <span id="toggle_sidemenu_l" class="glyphicons glyphicons-show_lines"></span>
                     <ul class="nav navbar-nav pull-right hidden">
@@ -105,8 +108,7 @@
                         </a>
                     </li>
                 </ul>
-                
-
+                 
                 <ul class="nav navbar-nav navbar-right">
 
                     </li>
@@ -172,10 +174,9 @@
                     <!-- End: Sidebar Header -->
 
                     <!-- sidebar menu -->
-                    <!-- sidebar menu -->
-                     <jsp:include page="../../../imports/main/menu.html" >
+                    <jsp:include page="../../../imports/main/menu.html" >
                     <jsp:param name="menu" value="chauffeur" />
-                    <jsp:param name="active" value="add-chauf" />
+                    <jsp:param name="active" value="list-chauf" />
                 </jsp:include>
                 
                 <?php include("../menu.php"); ?>
@@ -237,16 +238,16 @@
                 <header id="topbar">
                     <div class="topbar-left">
                         <ul class="nav nav-list nav-list-topbar pull-left">
-
+                             
                             <li class="active">
-                                <a href="javascript:void(0);">Gestion des chauffeurs</a>
+                                <a href="javascript:void(0);">Gestions des chauffeurs</a>
                             </li>
-
+                             
                         </ul>
                     </div>
                     <div class="topbar-right">
                          
-                        <a href="../chauffeur/list.php" class="btn btn-danger btn-sm fw600 ml10 btn-gradient btn-rounded"><span class="fa fa-list pr5"></span> Liste des chauffeurs</a>
+                        <a href="../chauffeur/add.php" class="btn btn-danger btn-sm fw600 ml10 btn-gradient btn-rounded"><span class="fa fa-user-plus pr5"></span> Ajouter un chauffeur</a>
                     </div>
 
                 </header>
@@ -259,119 +260,53 @@
                     <!-- begin: .tray-center -->
                     <div class="tray tray-center p25 va-t posr">
 
-                        <!-- create new order panel -->
-                        <div class="panel mb25 mt5">
-                            <div class="panel-heading">
-                                <span class="panel-title"><span class="fa fa-user-plus pr5"></span> Ajouter un chauffeur</span>
+                      
 
-                            </div>
-                            <div class="panel-body p20 pb10">
+                        <!-- recent orders table -->
+                        <div class="panel">
 
-                                <div class="tab-content pn br-n admin-form">
+                            <div class="panel-body pn">
+                                <table class="table table-striped table-hover" id="datatable2" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th class="text-center">Matricule</th>
+                                            <th class="text-center">photo</th>
+                                            <th class="text-center">Nom</th>
+                                            <th class="text-center">Prénom(s)</th>
+                                            <th class="text-center">Contact</th>
+                                            <th class="text-right">Action</th>
 
-                                    <div id="tab1_1" class="tab-pane active">
-
-                                        <div class="section row mbn">
-
-
-                                            <form method="post" action="addChauffeurDB.php" enctype="multipart/form-data">
-                                                <h5 class="text-info" style="margin: 0;">Informations générales</h5>
-                                                <h6 style="margin: 0;">Les champs précédés du caractère astérisque (*) sont obligatoires</h6>
-
-                                                <div class="row">
-                                                    <div class="col-md-6" style="margin-top: 10px;">
-                                                        <div class="form-group">
-                                                            <label>Matricule du chauffeur *</label>
-                                                            <input id="matricule" name="matricule" type="text" class="form-control required">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Nom du chauffeur *</label>
-                                                            <input id="userName" name="nom" type="text" class="form-control required">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Prénom(s) du chauffeur *</label>
-                                                            <input id="userName" name="prenom" type="text" class="form-control required">
-                                                        </div>                                                        
-														<div class="form-group">
-                                                            <label>Date d'embauche *</label>
-                                                            <input id="userName" name="dateEmb" type="date" class="form-control required">
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>Téléphone *</label>
-                                                                    <input id="telephone" name="telephone" type="text" class="form-control required">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>Contrat *</label>
-                                                                    <select name="contrat" id="contrat" data-placeholder="" class="chosen-select form-control" tabindex="2">
-                                                                        <option value=""></option>
-                                                                         
-                                                                    </select>
-                                                                    
-                                                                </div>
-                                                                
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        
-
-                                                    </div>
-                                                    <div class="col-md-6" style="margin-top: 10px;">
-                                                        <div style="margin: 0 auto; width: 180px;">
-                                                            <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
-                                                                <div class="fileupload-preview thumbnail mb15">
-                                                                    <img data-src="holder.js/100%x147" alt="holder">
-                                                                </div>
-                                                                <span class="button btn-system btn-file btn-block ph5">
-                                                                    <span class="fileupload-new">Photo</span>
-                                                                    <span class="fileupload-exists">Photo</span>
-																	<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                                                                    <input type="file" name="photo" id="photo" />
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-												   <?php
-														/*$req1=$mysqli->query("SELECT * FROM gare ");
-														$res1=$req1->fetchall();
-														foreach($res1 as $gare){
-															echo'<tr><td align="left">'.$gare['0'].' '. $gare['1'].'</td><td align="left">'.$gare['2'].'</td><td align="left">'.$gare['3'].'</td><td align="left"></td></tr>';
-														}
-														echo "<br /><br /><br />";
-														//$date = new DateTime('2000-01-01');
-														//$today = date("Y-m-d");
-														$today = date('Y-m-d H:i:s');
-														echo $today;*/
-												   ?>
-                                                <div class="row">
-                                                    <div class="col-md-12 mt10">
-                                                        <div class="form-group">
-                                                            <button class="btn btn-sm btn-dark pull-left m-t-n-xs" type="submit" name="saveChauffeur"><strong>Enregistrer le chauffeur</strong></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                                    
-                                                                    
-                                                   <input type="hidden" name="action" value="chauffeur" />
-                                                   <input type="hidden" name="operation" value="add" />
-                                                                               
-                                            </form>
-                                        </div> 
-
-                                        <!-- end section row -->
-
-                                    </div>
-
-                                </div>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                         
+                                            <tr>
+                                                <td class="text-center"></td>
+                                                <td class="text-center">
+                                                     
+                                                    <img class="img-responsive mw30 ib mr10" alt="" style="border:2px solid #C4C4C4;" title="chauffeur" src="/hprofil-ak-xat1/images/">
+                                                     
+                                                </td>
+                                                <td class="text-center"> </td>
+                                                <td class="text-center"> </td>
+                                                <td class="text-center"> </td>
+                                                <td class="text-right">
+                                                    <a href="#" class="btn btn-xs btn-default">
+                                                    <span class="fa fa-edit"></span>
+                                                    </a>&nbsp;<a href="manager/chauffeur/detail?arg= " class="btn btn-xs btn-default">
+                                                    <span class="fa fa-eye"></span>
+                                                </a>
+                                                </td>
+                                            </tr>
+                                         
+                                       
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
-                       
                     </div>
                     <!-- end: .tray-center -->
 
@@ -495,7 +430,7 @@
         <script type="text/javascript" src="../../../../vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
         <script type="text/javascript" src="../../../../vendor/plugins/datatables/extensions/Editor/js/editor.bootstrap.js"></script>
 
-        
+         
 
         <!-- Theme Javascript -->
         <script type="text/javascript" src="../../../../assets/js/utility/utility.js"></script>
@@ -564,8 +499,7 @@
             });
         </script>
 
-        
-
+         
         <!-- Jquery Validate -->
         <script src="../../../../vendor/plugins/validate/jquery.validate.min.js"></script>
         <!-- END: PAGE SCRIPTS -->

@@ -1,4 +1,6 @@
- 
+<?php
+	include_once '../includes/dbConnexion.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -271,12 +273,19 @@
                                         <tr>
                                             
                                             <th class="text-center">Matricule</th>
-                                            <th class="text-center">photo</th>
+                                            <th class="text-center">Photo</th>
                                             <th class="text-center">Nom</th>
                                             <th class="text-center">Prénom(s)</th>
                                             <th class="text-center">Contact</th>
                                             <th class="text-right">Action</th>
-
+											<?php
+												$selectChauffeur = $mysqli->query("SELECT * FROM chauffeur");
+												$resChauffeur=$selectChauffeur->fetchall();
+												foreach($resChauffeur as $chauffeur){
+													echo"<tr><td align=''>".$chauffeur['0']."</td><td align=''>".$chauffeur['4']."</td><td align=''>".$chauffeur['1']."</td><td align=''>".$chauffeur['2']."</td><td align=''>".$chauffeur['4']."</td></tr>";
+												}
+											
+											?>
                                         </tr>
                                     </thead>
                                     <tbody>
